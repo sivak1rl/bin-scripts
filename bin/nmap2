@@ -4,4 +4,4 @@ if [ -z $1 ] ; then
 	>&2 echo "Usage: $0 <ip address>"
 	exit 1
 fi
-nmap -p- $1
+nmap -p- $1 -oN nmap2_$1
