@@ -1,7 +1,7 @@
 #!/bin/bash
 #Attempts to determine what is available on the top 128 ports
 if [ -z $1 ] ; then
-	>&2 echo "Usage: nmap1 <ip address>"
+	>&2 echo "Usage: $0 <ip address>"
 	exit 1
 fi
 nmap -sS -sT -sV --top-ports=128 $1 -oN nmap1_$1
