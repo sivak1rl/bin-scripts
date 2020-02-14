@@ -15,10 +15,10 @@ fi
 if [ "$overwrite" != "Y" ] && [ "$overwrite" != "Yes" ] && [ "$overwrite" != "yes" ] && [ "$overwrite" != "YES" ] && [ "$overwrite" != "y" ] ; then
 		echo "The output will be appended to the file instead of overwriting"
 		echo "--------------------------------------------------------------" | tee -a $PWD/gobuster_${PWD##*/}.out
-		echo "gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt ${@:3} | tee -a $PWD/gobuster_${PWD##*/}.out"
-		gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt  ${@:3} | tee -a $PWD/gobuster_${PWD##*/}.out
+		echo "gobuster dir -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt ${@:3} | tee -a $PWD/gobuster_${PWD##*/}.out"
+		gobuster dir -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt  ${@:3} | tee -a $PWD/gobuster_${PWD##*/}.out
 	else
 		echo "The file will be overwritten"
-		echo "gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt ${@:3} | tee $PWD/gobuster_${PWD##*/}.out"
-		gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt  ${@:3}  | tee $PWD/gobuster_${PWD##*/}.out
+		echo "gobuster dir -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt ${@:3} | tee $PWD/gobuster_${PWD##*/}.out"
+		gobuster dir -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt  ${@:3}  | tee $PWD/gobuster_${PWD##*/}.out
 fi
