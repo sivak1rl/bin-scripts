@@ -1,4 +1,5 @@
 #!/bin/bash
+#Attempts to determine what is available on the top 128 ports
 if [ -z $1 ] ; then
 	>&2 echo "Usage: nmap1 <ip address>"
 	exit 1
