@@ -1,0 +1,2 @@
+#!/bin/bash
+rdesktop -u offsec -p tmPsC52kBy3 10.11.22.164

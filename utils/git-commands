@@ -1,0 +1,6 @@
+git config credential.helper 'cache' #cache credentials for 15 minutes
+git add -A #add all changes
+git add [filename] #add a specific file (if you know it)
+git commit -m "message" #commit change
+git push -u origin master #push to master
+git status #list current changes

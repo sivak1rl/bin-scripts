@@ -1,0 +1,24 @@
+#!/bin/bash
+#Runs gobuster with the cmd line arguments -u and -t as arg 1 and 2, respectively,
+#Place any other hyphen arguments after arg 1 and 2 and they will be placed appropriately.
+#automatically uses common word list
+if [ -z $1 ] ; then
+	>&2 echo "Usage: nutbuster <ip address> <threads> [gobuster - args]"
+	exit 1
+fi
+overwrite="N"
+test -f $PWD/gobuster_${PWD##*/}.out
+if (("$?" == "0")); then
+	echo "do you want to overwrite the file " $PWD/gobuster_${PWD##*/}.out "(Y/[N])"
+	read overwrite
+fi
+if [ "$overwrite" != "Y" ] && [ "$overwrite" != "Yes" ] && [ "$overwrite" != "yes" ] && [ "$overwrite" != "YES" ] && [ "$overwrite" != "y" ] ; then
+		echo "The output will be appended to the file instead of overwriting"
+		echo "--------------------------------------------------------------" | tee -a $PWD/gobuster_${PWD##*/}.out
+		echo "gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt ${@:3} | tee -a $PWD/gobuster_${PWD##*/}.out"
+		gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt  ${@:3} | tee -a $PWD/gobuster_${PWD##*/}.out
+	else
+		echo "The file will be overwritten"
+		echo "gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt ${@:3} | tee $PWD/gobuster_${PWD##*/}.out"
+		gobuster -u http://$1 -t $2 -w /usr/share/dirb/wordlists/common.txt  ${@:3}  | tee $PWD/gobuster_${PWD##*/}.out
+fi

@@ -1,0 +1,18 @@
+#!/bin/bash
+#scans a /24 network with the specified ip and nameserver
+if [ -z $1 ]; then
+        >&2 echo "Usage: $0 <ip octets (e.g. 10.11.1.)> <nameserver> [outfile]"
+	exit 1;
+fi
+if [ -z $2 ]; then
+        >&2 echo "Usage: $0 <ip octets (e.g. 10.11.1.)> <nameserver> [outfile]"
+	exit 1;
+fi
+iprange=$1
+nameserver=$2
+
+if [ -z $3 ]; then
+	for ip in {0..255};do host $iprange$ip $nameserver ;done |grep -v "not found"
+else
+	for ip in {0..255};do host $iprange$ip $nameserver | tee -a $3;done |grep -v "not found"
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+# Simple zone transfer bash script
+# $1 is the first argument.
+# if not given, show usage doc
+if [ -z $1 ]; then
+echo "Simple Zone Transfer Script"
+echo "Usage:	$0 <domain name> "
+fi
+# identify nameservers
+for server in $(host -t ns $1 |cut -d" " -f4);
+do
+	host -l $1 $server
+done

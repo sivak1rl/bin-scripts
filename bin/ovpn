@@ -1,0 +1,2 @@
+#!/bin/bash
+openvpn --config /root/Documents/pwk/OS-48926-OSCP.ovpn --auth-user-pass /root/Documents/pwk/creds.txt

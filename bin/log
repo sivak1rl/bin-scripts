@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ -z "$1" ] ; then
+	echo "log: add a line, add the command, then execute the command and append output to the file";
+	echo "Usage	$0 <command>";
+fi
+echo "---------------------------------"
+date | tee -a ./output.txt 
+echo "----------" | tee -a ./output.txt 
+echo $@ | tee -a ./output.txt 
+$@ | tee -a ./output.txt
