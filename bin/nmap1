@@ -4,4 +4,4 @@ if [ -z $1 ] ; then
 	>&2 echo "Usage: nmap1 <ip address>"
 	exit 1
 fi
-nmap -sS -sT -sV --top-ports=128 $1
+nmap -sS -sT -sV --top-ports=128 $1 -oN nmap1_$1
