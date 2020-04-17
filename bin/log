@@ -6,5 +6,11 @@ fi
 echo "---------------------------------"
 date | tee -a ./output.txt 
 echo "----------" | tee -a ./output.txt 
+echo "-command--" | tee -a ./output.txt
+echo "----------" | tee -a ./output.txt 
 echo $@ | tee -a ./output.txt 
+echo "----------" | tee -a ./output.txt
+echo "--output--" | tee -a ./output.txt
+echo "----------" | tee -a ./output.txt 
 $@ | tee -a ./output.txt
+echo "---------------------------------" | tee -a ./output.txt
